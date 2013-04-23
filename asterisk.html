@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cursos Ineldua</title>
+    <meta name="description" content="Curso asterisk">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style type="text/css">
+      body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+      }
+    </style>
+    <link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css">
+
+    <link rel="stylesheet" href="assets/css/shCore.css">
+    <link rel="stylesheet" href="assets/css/shThemeDefault.css">
+
+    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <a class="brand" href="#">Ineldua</a>
+
+          <ul class="nav">
+            <li><a href="index.html"><i class="icon-home"></i> Inicio</a></li>
+            <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-book"></i> Cursos <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-header">Activos</li>
+                <li><a href="asterisk.html">Asterisk</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Inactivos</li>
+              </ul>
+            </li>
+            <li><a href=""><i class="icon-envelope"></i> Acerca</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#programa" data-toggle="tab">Programa</a></li>
+          <li><a href="#contenido" data-toggle="tab">Contenido</a></li>
+          <li><a href="#recursos" data-toggle="tab">Recursos</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="programa" class="tab-pane active"></div>
+
+          <div id="contenido" class="tab-pane">
+            <div class="tabbable">
+              <!--<ul class="nav nav-tabs">
+                <li class="active"><a href="#unidad01" data-toggle="tab">Unidad 01</a></li>
+                <li><a href="#unidad02" data-toggle="tab">Unidad 02</a></li>
+              </ul>-->
+            </div>
+          </div>
+
+          <div id="recursos" class="tab-pane">
+            <div class="tabbable">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#linux" data-toggle="tab">Comandos Linux</a></li>
+                <li><a href="#instalacion" data-toggle="tab">Instalación Asterisk</a></li>
+              </ul>
+            </div>
+
+            <div class="tab-content">
+              <div id="linux" class="tab-pane active"></div>
+
+              <div id="instalacion" class="tab-pane">
+                <h1 align="center">Instalación de Asterisk</h1>
+
+                <h2>Prerrequisitos</h2>
+                <ul>
+                  <li>Instalación Sistema Operativo Debian 6.</li>
+                  <li>Actualización del Sistema Operativo: </li>
+                </ul>
+                <pre class="brush: bash">
+                  $ sudo apt-get update
+                  $ sudo apt-get upgrade
+                </pre>
+
+                <h2>Paquetes Fuente</h2>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/
+                  $ wget http://downloads.xiph.org/releases/speex/speex-1.2rc1.tar.gz
+                  $ wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
+                  $ wget http://downloads.asterisk.org/pub/telephony/certified-asterisk/certified-asterisk-1.8.15-current.tar.gz
+                  $ wget http://mirror.freepbx.org/freepbx-2.9.0.tar.gz
+                  
+                </pre>
+
+                <h3>Descompresión</h3>
+
+                <pre class="brush: bash">
+                  $ mkdir tar
+                  $ for i in `ls *gz`
+                  > do
+                  >   tar xf $i
+                  >   mv $i tar/
+                  > done
+                </pre>
+
+                <h2>Dependencias Necesarias</h2>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/certified-asterisk-1.8.15-cert2/contrib/scripts/
+                  $ sudo ./install_prereq install
+                  $ sudo apt-get -y install gcc g++ make libncurses5-dev apache2 libxml2-dev mysql-server mpg123 php5 php-pear  \
+                  php5-mysql libmysqlclient15-dev linux-headers-`uname -r` php5-gd libmyodbc postfix libtiff4-dev libtiff-tools \
+                  imagemagick gs
+                  $ sudo pear install DB
+                </pre>
+
+                <h2>Compilación e Instalación</h2>
+
+                <h3>Speex</h3>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/speex-1.2rc1/
+                  $ sudo ./configure
+                  $ sudo make && sudo make install
+                </pre>
+
+                <h3>DAHDI</h3>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/dahdi-linux-complete-2.6.2+2.6.2/
+                  $ sudo make clean
+                  $ sudo make all
+                  $ sudo make install
+                  $ sudo make config
+                </pre>
+
+                <h3>Asterisk</h3>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/certified-asterisk-1.8.15-cert2/
+                  $ sudo make clean
+                  $ sudo ./configure
+                  $ sudo make && sudo make install
+                  $ sudo make samples
+                </pre>
+
+                <h2>Usuario asterisk</h2>
+
+                <h3>Permisos servicio Asterisk</h3>
+
+                <pre class="brush: bash">
+                  $ sudo useradd -r -c "Asterisk PBX" -d /var/lib/asterisk asterisk
+                  $ sudo chown -R asterisk /var/run/asterisk
+                  $ sudo chown -R asterisk /var/log/asterisk
+                  $ sudo chown -R asterisk /var/lib/asterisk/moh
+                  $ sudo ln -s /var/lib/asterisk/moh /var/lib/asterisk/mohmp3
+                </pre>
+
+                <h3>Permisos servicio Apache</h3>
+
+                <pre class="brush: bash">
+                  $ sudo sed -i 's/www-data/asterisk/g' /etc/apache2/envvars
+                  $ sudo chown -R asterisk /var/lock/apache2
+                  $ sudo /etc/init.d/apache2 restart
+                </pre>
+
+                <h2>Instalación de FreePBX</h2>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/freepbx-2.9.0/
+                  $ mysqladmin -pPassword create asterisk
+                  $ mysqladmin -pPassword create asteriskcdrdb
+                  $ mysql -pPassword asterisk < SQL/newinstall.sql
+                  $ mysql -pPassword asteriskcdrdb < SQL/cdr_mysql_table.sql
+                  $ mysql -pPassword ## Entra a MySQL
+                </pre>
+
+                <pre class="brush: sql">
+                  mysql> GRANT ALL PRIVILEGES ON asteriskcdrdb.* TO asteriskuser@localhost IDENTIFIED BY 'password';
+                  mysql> GRANT ALL PRIVILEGES ON asterisk.* TO asteriskuser@localhost IDENTIFIED BY 'password';
+                  mysql> FLUSH PRIVILEGES;
+                </pre>
+
+                <pre class="brush: bash">
+                  $ cd /usr/src/freepbx-2.9.0/
+                  $ sudo safe_asterisk
+                  $ sudo ./install_amp
+                </pre>
+
+                Editar el archivo /etc/rc.local, debe quedar así:
+
+                <pre class="brush: bash">
+                  /usr/local/sbin/amportal start
+                  exit 0
+                </pre>
+
+                Ir al navegador!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="footer">
+      <hr>
+      <i class="icon-globe"></i> by <a href="http://blogcito.info/" target="blank">Chesstrian</a>
+    </div>
+
+    <script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/shCore.js"></script>
+    <script src="assets/js/shBrushBash.js"></script>
+    <script src="assets/js/shBrushSql.js"></script>
+
+    <script type="text/javascript">
+      SyntaxHighlighter.all();
+    </script>
+
+
+  </body>
+</html>
