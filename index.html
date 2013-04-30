@@ -14,13 +14,21 @@
           padding-bottom: 40px;
       }
 
-      .footer {
+      div.footer {
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
         position: fixed;
+        background-color: rgb(0,0,0);
         width: 100%;
         bottom: 0px;
+      }
+
+      hr.footer {
+        margin: 0px;
+      }
+
+      p.footer {
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
     </style>
     <link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css">
@@ -54,8 +62,10 @@
     </div>
 
     <div class="footer">
-      <hr>
-      <i class="icon-globe"></i> by <a href="http://blogcito.info/" target="blank">Chesstrian</a>
+      <hr class="footer">
+      <p class="footer">
+        <i class="icon-globe"></i> by <a href="http://blogcito.info/" target="blank">Chesstrian</a>
+      </p>
     </div>
 
     <script src="assets/js/jquery-1.9.1.min.js"></script>

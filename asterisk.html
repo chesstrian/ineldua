@@ -14,13 +14,21 @@
           padding-bottom: 40px;
       }
 
-      .footer {
+      div.footer {
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
         position: fixed;
+        background-color: rgb(0,0,0);
         width: 100%;
         bottom: 0px;
+      }
+
+      hr.footer {
+        margin: 0px;
+      }
+
+      p.footer {
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
     </style>
     <link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css">
@@ -94,6 +102,10 @@
                   <li>Actualización del Sistema Operativo: </li>
                 </ul>
                 <pre class="brush: bash">
+                  % apt-get -y install sudo
+                </pre>
+
+                <pre class="brush: bash">
                   $ sudo apt-get update
                   $ sudo apt-get upgrade
                 </pre>
@@ -125,7 +137,7 @@
                 <pre class="brush: bash">
                   $ cd /usr/src/certified-asterisk-1.8.15-cert2/contrib/scripts/
                   $ sudo ./install_prereq install
-                  $ sudo apt-get -y install gcc g++ make libncurses5-dev apache2 libxml2-dev mysql-server mpg123 php5 php-pear  \
+                  $ sudo apt-get -y install sudo gcc g++ make libncurses5-dev apache2 libxml2-dev mysql-server mpg123 php5 php-pear  \
                   php5-mysql libmysqlclient15-dev linux-headers-`uname -r` php5-gd libmyodbc postfix libtiff4-dev libtiff-tools \
                   imagemagick gs
                   $ sudo pear install DB
@@ -222,8 +234,10 @@
     <br>
 
     <div class="footer">
-      <hr>
-      <i class="icon-globe"></i> by <a href="http://blogcito.info/" target="blank">Chesstrian</a>
+      <hr class="footer">
+      <p class="footer">
+        <i class="icon-globe"></i> by <a href="http://blogcito.info/" target="blank">Chesstrian</a>
+      </p>
     </div>
 
     <script src="assets/js/jquery-1.9.1.min.js"></script>
