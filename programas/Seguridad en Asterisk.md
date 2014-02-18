@@ -22,3 +22,33 @@ El curso va dirigido a personas que instalan, configuran o administran plantas t
 
 ## Contenido
 
+### Capítulo 1
+
+1. Breve historia de la VoIP
+2. Protocolos de la VoIP
+3. Protocolo SIP
+4. Códecs
+
+### Capítulo 2
+
+1. Footprinting
+2. Fingerprinting
+3. Análisis
+4. Explotación
+
+### Capítulo 3
+
+1. Eavesdroping
+2. DOS
+3. Fuzzing
+
+### Capítulo 4
+
+1. Análisis de un sistema con FreePBX
+2. Análisis de un sistema con Elastix
+3. Análisis de un sistema con Trixbox
+4. Escalada de Privilegios
+
+### Capítulo 5
+
+1. Algunos bugs
